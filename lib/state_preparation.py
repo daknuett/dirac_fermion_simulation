@@ -1,6 +1,6 @@
 from pyqcs import X, H, State, list_to_circuit
-from circuits import RZ
-from log_time import log_time
+from .circuits import RZ
+from .log_time import log_time
 
 
 def prepare_momentum_eigenstate(nqbits, qbits_px, qbits_py, qbits_phi

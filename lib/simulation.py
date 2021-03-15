@@ -1,5 +1,5 @@
-from trotterization import Ttrot, Ttrot_potential
-from log_time import log_time
+from .trotterization import Ttrot, Ttrot_potential
+from .log_time import log_time
 
 
 def simulate_free_case(state, qbits_px, qbits_py, qbits_phi, c, dt, momentum_omegas, t):

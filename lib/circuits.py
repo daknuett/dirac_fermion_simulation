@@ -2,14 +2,15 @@ from pyqcs import (X, H, S, R, CX
                    , list_to_circuit)
 import numpy as np
 
+
 def CRX(act, control, phi):
-    return (CX(act, control) 
+    return (CX(act, control)
             | (H(act) | R(act, -phi) | X(act) | R(act, phi) | X(act) | H(act))
             | CX(act, control))
 
 
 def CRY(act, control, phi):
-    return (CX(act, control) 
+    return (CX(act, control)
             | (S(act) | H(act) | R(act, -phi) | X(act) | R(act, phi) | X(act) | H(act) | S(act).get_dagger())
             | CX(act, control))
 
@@ -20,6 +21,8 @@ def RZ(act, phi):
 
 def T(act):
     return R(act, np.pi / 8)
+
+
 def C2X(act, c1, c2):
     return (
         H(act) | CX(act, c2) | T(act).get_dagger() | CX(act, c1)
@@ -27,6 +30,7 @@ def C2X(act, c1, c2):
         | T(act) | H(act) | T(c2).get_dagger() | CX(c2, c1)
         | T(c2).get_dagger() | CX(c2, c1) | T(c1) | S(c2)
     )
+
 
 def CR(act, control, phi):
     return (R(act, phi/2) | CX(act, control)

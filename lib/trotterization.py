@@ -1,7 +1,7 @@
 from pyqcs import X , list_to_circuit
 
-from qft import QFT
-from circuits import CRX, CRY, C5R, C5X
+from .qft import QFT
+from .circuits import CRX, CRY, C5R, C5X
 
 
 def Ttrot(qbits_phi, qbits_px, qbits_py, dt, c, momentum_omegas):

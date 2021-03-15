@@ -1,6 +1,6 @@
 from pyqcs import compute_amplitudes
 
-from log_time import log_time
+from .log_time import log_time
 
 def res2momentum(res, c, N, momentum_omegas):
     result = 0

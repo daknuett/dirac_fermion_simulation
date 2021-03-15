@@ -4,8 +4,8 @@ import json
 import numpy as np
 from pyqcs.experiment.workflow import WorkflowSpawner
 
-from experiment import experiment_free_case_time_evolution
-from log_time import log_time
+from lib.experiment import experiment_free_case_time_evolution
+from lib.log_time import log_time
 
 if __name__ == "__main__":
     with log_time(__name__, "setup"):

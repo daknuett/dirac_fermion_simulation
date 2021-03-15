@@ -3,8 +3,8 @@ import numpy as np
 import timeit
 import logging
 
-from state_preparation import prepare_momentum_eigenstate
-from readout import read_all_amplitudes
+from .state_preparation import prepare_momentum_eigenstate
+from .readout import read_all_amplitudes
 
 def test_prepare_momentum_eigenstate_immideate_momentum_readout(ptest):
     nqbits = 17
