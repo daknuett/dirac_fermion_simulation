@@ -1,5 +1,6 @@
 from pyqcs import (X, H, S, R, CX
                    , list_to_circuit)
+import numpy as np
 
 def CRX(act, control, phi):
     return (CX(act, control) 

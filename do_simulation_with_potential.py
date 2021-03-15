@@ -4,15 +4,16 @@ import json
 import numpy as np
 from pyqcs.experiment.workflow import WorkflowSpawner
 
-from experiment import experiment_free_case_time_evolution, experiment_with_potential_time_evolution
+from experiment import experiment_with_potential_time_evolution
 from log_time import log_time
 
 if __name__ == "__main__":
     with log_time(__name__, "setup"):
         c = 1
         dt = 0.01
-        eps = 1e-6
+        eps = 1e-10
         N = 8
+        V0 = .05
         antifermion = False
 
         qbits_phi = [0]
@@ -29,8 +30,12 @@ if __name__ == "__main__":
 
         logging.basicConfig(level=logging.INFO)
 
-        simul2 = lambda t: experiment_free_case_time_evolution(qbits_px, qbits_py, qbits_phi, px_init, py_init, phi_init, antifermion, c, dt, N, momentum_omegas, eps, t)
-        time = np.arange(0.1, 4, 0.1)
+        simul2 = lambda t: experiment_with_potential_time_evolution(
+            qbits_px, qbits_py, qbits_phi, ancilla_qbits
+            , px_init, py_init, phi_init
+            , antifermion, c, dt, V0, N
+            , momentum_omegas, eps, t)
+        time = np.array([0.1, 0.5, 1, 1.5])
 
     with log_time(__name__, "set up ray"):
         nworkers = 4
@@ -41,9 +46,8 @@ if __name__ == "__main__":
         pool = ray.util.ActorPool(actors)
 
     with log_time(__name__, "compute results"):
-        results = list(pool.map(lambda a,v: a.execute.remote(v), time))
+        results = list(pool.map(lambda a, v: a.execute.remote(v), time))
 
     with log_time(__name__, "save results"):
-        with open("simulation_free_case.json", "w") as fout:
+        with open("simulation_with_potential_large_px.json", "w") as fout:
             json.dump({"time": list(time), "results": results}, fout)
-

@@ -13,6 +13,7 @@ def experiment_free_case_time_evolution(qbits_px, qbits_py, qbits_phi, px_init, 
         px, py, phi = compute_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps, c, N, momentum_omegas)
     return px, py, phi
 
+
 def experiment_with_potential_time_evolution(qbits_px, qbits_py, qbits_phi, ancillas, px_init, py_init, phi_init, antifermion, c, dt, V0, N, momentum_omegas, eps, t):
     with log_time(__name__, "experiment_with_potential_time_evolution"):
         state = prepare_momentum_eigenstate(len(qbits_px) + len(qbits_py) + len(qbits_phi) + len(ancillas)
