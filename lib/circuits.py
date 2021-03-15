@@ -33,22 +33,26 @@ def C2X(act, c1, c2):
 
 
 def CR(act, control, phi):
-    return (R(act, phi/2) | CX(act, control)
-            | R(act, -phi/2) | R(control, phi/2) 
+    return (R(act, phi / 2) | CX(act, control)
+            | R(act, -phi / 2) | R(control, phi / 2)
             | CX(act, control)
            )
-    
+
+
 def control5_handthrough(controls, ancillas):
     circuit = [C2X(ancillas[0], controls[0], controls[1])]
     for i, cancilla in enumerate(ancillas[:-1]):
-        circuit.append(C2X(ancillas[i+1], controls[i+2], cancilla))
+        circuit.append(C2X(ancillas[i + 1], controls[i + 2], cancilla))
     return list_to_circuit(circuit)
+
 
 def C5X(act, controls, ancillas):
     return (control5_handthrough(controls, ancillas)
             | CX(act, ancillas[-1])
             | control5_handthrough(controls, ancillas).get_dagger()
            )
+
+
 def C5R(act, controls, ancillas, phi):
     return (control5_handthrough(controls, ancillas)
             | CR(act, ancillas[-1], phi)

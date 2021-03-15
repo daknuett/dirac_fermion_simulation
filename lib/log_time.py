@@ -2,6 +2,7 @@ import logging
 import time
 from contextlib import contextmanager
 
+
 @contextmanager
 def log_time(logname, name, log_begin=False):
     logger = logging.getLogger(logname)
