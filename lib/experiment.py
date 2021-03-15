@@ -1,7 +1,7 @@
-from state_preparation import prepare_momentum_eigenstate
-from simulation import simulate_free_case, simulate_with_potential
-from readout import compute_all_amplitudes
-from log_time import log_time
+from .state_preparation import prepare_momentum_eigenstate
+from .simulation import simulate_free_case, simulate_with_potential
+from .readout import compute_all_amplitudes
+from .log_time import log_time
 
 
 def experiment_free_case_time_evolution(qbits_px, qbits_py, qbits_phi, px_init, py_init, phi_init, antifermion, c, dt, N, momentum_omegas, eps, t):
