@@ -4,7 +4,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .dct_statistics import avg, stddev, modus, avg_allbutmodus, stddev_allbutmodus
+from lib.dct_statistics import avg, stddev, modus, avg_allbutmodus, stddev_allbutmodus
 
 
 def plot_data(data):
