@@ -30,6 +30,6 @@ def read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps):
 
 def compute_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps, c, N, momentum_omegas):
     px, py, phi = read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps)
-    px = {res2momentum(shift_integer_result(res, qbits_px), c, N, momentum_omegas): v for res,v in px.items()}
-    py = {res2momentum(shift_integer_result(res, qbits_py), c, N, momentum_omegas): v for res,v in py.items()}
+    px = {res2momentum(res, c, N, momentum_omegas): v for res,v in px.items()}
+    py = {res2momentum(res, c, N, momentum_omegas): v for res,v in py.items()}
     return px, py, phi
