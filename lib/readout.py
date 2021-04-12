@@ -19,10 +19,14 @@ def shift_integer_result(res, qbits):
 def read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps):
     with log_time(__name__, "read_all_amplitudes"):
         px = compute_amplitudes(state, qbits_px, eps)
-        py = compute_amplitudes(state, qbits_py, eps)
+        if(qbits_py):
+            py = compute_amplitudes(state, qbits_py, eps)
+        else:
+            py = {0: 1}
         phi = compute_amplitudes(state, qbits_phi, eps)
         px = {shift_integer_result(k, qbits_px): v for k,v in px.items()}
-        py = {shift_integer_result(k, qbits_py): v for k,v in py.items()}
+        if(qbits_py):
+            py = {shift_integer_result(k, qbits_py): v for k,v in py.items()}
         phi = {shift_integer_result(k, qbits_phi): v for k,v in phi.items()}
 
     return (px, py, phi)

@@ -1,7 +1,8 @@
 from pyqcs import X , list_to_circuit
 
 from .qft import QFT
-from .circuits import CRX, CRY, C5R, C5X
+from .circuits import CRX, CRY, C5R, C5X, CR
+from .controlled_gate import ncontrolled
 
 
 def Ttrot(qbits_phi, qbits_px, qbits_py, dt, c, momentum_omegas):
@@ -40,3 +41,9 @@ def Ttrot_potential(qbits_px, ancillas, dt, V0):
             | list_to_circuit([X(i) for i in qbits_px[-5:]])
             | QFT(qbits_px)
            )
+
+
+def Ttrot_potential_optimized_8qbits(qbits_px, ancillas, dt, V0):
+    return (QFT(qbits_px).get_dagger()
+            | ncontrolled(qbits_px[0], CR, ancillas, qbits_px[-6:], -dt * V0 / 2)
+            | QFT(qbits_px))
