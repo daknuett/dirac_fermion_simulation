@@ -37,3 +37,8 @@ def compute_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps, c, N, mome
     px = {res2momentum(res, c, N, momentum_omegas): v for res,v in px.items()}
     py = {res2momentum(res, c, N, momentum_omegas): v for res,v in py.items()}
     return px, py, phi
+
+
+def compute_all_amplitudes_no_conversion(state, qbits_px, qbits_py, qbits_phi, eps, c, N, momentum_omegas):
+    px, py, phi = read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps)
+    return px, py, phi
