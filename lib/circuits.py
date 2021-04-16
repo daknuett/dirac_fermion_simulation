@@ -20,7 +20,7 @@ def RZ(act, phi):
 
 
 def T(act):
-    return R(act, np.pi / 8)
+    return R(act, np.pi / 4)
 
 
 def C2X(act, c1, c2):
