@@ -13,6 +13,7 @@ def ncontrolled(act, cgate, ancillas, controls, *args):
         raise ValueError(f"need len(controls) - 1 ancillas (expected {len(controls)  -1}, got {len(ancillas)})")
     if(len(ancillas) > len(controls) - 1):
         warnings.warn(f"excessive ancilla qbits used, this may lead to bad performance (expected {len(controls)  -1}, got {len(ancillas)})", ResourceWarning)
+    ancillas = ancillas[:len(controls) - 1]
 
     handthrough_circuit = [C2X(ancillas[0], controls[0], controls[1])]
     for i, cancilla in enumerate(ancillas[:-1]):
