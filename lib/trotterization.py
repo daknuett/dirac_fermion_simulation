@@ -45,5 +45,7 @@ def Ttrot_potential(qbits_px, ancillas, dt, V0):
 
 def Ttrot_potential_optimized_8qbits(qbits_px, ancillas, dt, V0):
     return (QFT(qbits_px).get_dagger()
+            | list_to_circuit([X(i) for i in qbits_px[-6:]])
             | ncontrolled(qbits_px[0], CR, ancillas, qbits_px[-6:], -dt * V0 / 2)
+            | list_to_circuit([X(i) for i in qbits_px[-6:]])
             | QFT(qbits_px))
