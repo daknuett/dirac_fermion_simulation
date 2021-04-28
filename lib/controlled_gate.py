@@ -20,4 +20,4 @@ def ncontrolled(act, cgate, ancillas, controls, *args):
         handthrough_circuit.append(C2X(ancillas[i + 1], controls[i + 2], cancilla))
     handthrough_circuit = list_to_circuit(handthrough_circuit)
 
-    return handthrough_circuit | cgate(act, ancillas[-1], *args) | handthrough_circuit
+    return handthrough_circuit | cgate(act, ancillas[-1], *args) | handthrough_circuit.get_dagger()
