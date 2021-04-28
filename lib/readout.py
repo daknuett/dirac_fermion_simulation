@@ -13,7 +13,7 @@ def res2momentum(res, c, N, momentum_omegas):
 
 
 def shift_integer_result(res, qbits):
-    return res >> qbits[0]
+    return res >> min(qbits)
 
 
 def read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps):
