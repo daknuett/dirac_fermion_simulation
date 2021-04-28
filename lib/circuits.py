@@ -39,6 +39,10 @@ def CR(act, control, phi):
            )
 
 
+def CRI(act, control, phi):
+    return CR(act, control, phi) | X(act) | CR(act, control, phi) | X(act)
+
+
 def control5_handthrough(controls, ancillas):
     circuit = [C2X(ancillas[0], controls[0], controls[1])]
     for i, cancilla in enumerate(ancillas[:-1]):
