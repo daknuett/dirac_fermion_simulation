@@ -2,7 +2,7 @@ import numpy as np
 
 from .state_preparation import prepare_momentum_eigenstate
 from .simulation import simulate_free_case, simulate_with_potential, simulate_with_potential_optimized
-from .readout import compute_all_amplitudes, compute_all_amplitudes_no_conversion
+from .readout import compute_all_amplitudes
 from .log_time import log_time
 
 

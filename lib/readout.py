@@ -35,3 +35,16 @@ def read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps):
 def compute_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps, c, N, momentum_omegas):
     px, py, phi = read_all_amplitudes(state, qbits_px, qbits_py, qbits_phi, eps)
     return px, py, phi
+
+
+class I2F:
+    def __init__(self, c, N, momentum_omegas):
+        self.c = c
+        self.N = N
+        self.momentum_omegas = momentum_omegas
+
+    def i2f(self, res):
+        return res2momentum(res, self.c, self.N, self.momentum_omegas)
+
+    def __call__(self, res):
+        return self.i2f(res)
