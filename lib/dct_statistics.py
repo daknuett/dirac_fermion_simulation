@@ -23,3 +23,7 @@ def get_expectation_value(values, i2f, f=lambda x:x):
 def get_std(values, i2f):
     return (get_expectation_value(values, i2f, lambda x:x**2)
                 - get_expectation_value(values, i2f)**2)**.5
+
+
+def get_amplitude(values):
+    return sum(v for k,v in values.items())
