@@ -25,7 +25,7 @@ if __name__ == "__main__":
         momentum_omegas[-1] *= -1
 
         ptot = 20
-        angles = np.arange(0, np.pi / 2, 1)
+        angles = np.arange(0, np.pi / 2, .2)
         t = 4.5
 
         phi_init = 0.12
