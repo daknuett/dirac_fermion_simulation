@@ -10,10 +10,10 @@ from lib.log_time import log_time
 if __name__ == "__main__":
     with log_time(__name__, "setup"):
         c = 1
-        dt = 0.01
+        dt = 0.005
         eps = 1e-10
         N = 8
-        V0 = .5
+        V0 = 144.5
         antifermion = False
 
         qbits_phi = [0]
@@ -24,9 +24,9 @@ if __name__ == "__main__":
         momentum_omegas = [2**i for i in range(N)]
         momentum_omegas[-1] *= -1
 
-        ptot = 20
+        ptot = 80
         angles = np.arange(0, np.pi / 2, .2)
-        t = 4.5
+        t = 7.5
 
         phi_init = 0.12
 
